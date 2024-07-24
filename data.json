@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "user1",
+            "matrix": 3128,
+            "coin": 0,
+            "combs": 40,
+            "maxCombs":99,
+            "lastExit": "",
+            "rate":0,
+            "hiveCount":0,
+            "booster1":"",
+            "booster2":"",
+            "booster3":""
+        },
+        {
+            "id": 2,
+            "name": "user2",
+            "matrix": 68996300931,
+            "coin": 0,
+            "combs": 40,
+            "lastExit": 0,
+            "rate":0,
+            "hiveCount":0
+        }
+    ]
+}
