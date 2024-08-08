@@ -1,11 +1,6 @@
 function createUnityInstance(canvas, config, onProgress) {
   onProgress = onProgress || function () {};
 
-  // Polyfill Atomics.wake for old Emscripten fastcomp compiler.
-  // TODO: When we update to new Emscripten, this can be removed.
-  if (typeof Atomics !== 'undefined' && Atomics.notify && !Atomics.wake) {
-    Atomics.wake = Atomics.notify;
-  }
 
   function showBanner(msg, type) {
     // Only ever show one error at most - other banner messages after that should get ignored
@@ -60,7 +55,7 @@ function createUnityInstance(canvas, config, onProgress) {
       preserveDrawingBuffer: false,
       powerPreference: 2,
     },
-    wasmFileSize: 60623552,
+    wasmFileSize: 62936579,
     streamingAssetsUrl: "StreamingAssets",
     downloadProgress: {},
     deinitializers: [],
@@ -92,10 +87,8 @@ function createUnityInstance(canvas, config, onProgress) {
     },
     locateFile: function (url) {
       if (url == "build.wasm") return this.codeUrl;
-      if (url == "build.worker.js") return this.workerUrl;
       return url;
     },
-    mainScriptUrlOrBlob: this.frameworkUrl,
     disabledCanvasEvents: [
       "contextmenu",
       "dragstart",
@@ -796,8 +789,6 @@ Module.fetchWithProgress = function () {
       reject(msg);
     } else if (!Module.SystemInfo.hasWasm) {
       reject("Your browser does not support WebAssembly.");
-    } else if (!Module.SystemInfo.hasThreads) {
-      reject("Your browser does not support multithreading.");
     } else {
       Module.startupErrorHandler = reject;
       onProgress(0);
