@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
     event.waitUntil(
-      caches.open('v22').then(function(cache) {
+      caches.open('v23').then(function(cache) {
         return cache.addAll([
           '/',
           '/Build/Beetris.data',
@@ -24,7 +24,7 @@ self.addEventListener('install', function(event) {
   });
   
   self.addEventListener('activate', function(event) {
-    var cacheWhitelist = ['v22'];
+    var cacheWhitelist = ['v23'];
   
     event.waitUntil(
       caches.keys().then(function(keyList) {
